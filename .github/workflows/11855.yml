@@ -1,0 +1,23 @@
+name: Testing brew service
+on:
+  workflow_dispatch:
+    
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['macos-14-large', 'macos-14']
+        
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Set up Homebrew
+      run: brew update
+
+    #- name: Install brew services
+      #run: |
+       # brew tap-new homebrew/services
+        
+    - name: Testing brew service
+      run: brew services
